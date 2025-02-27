@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='beecom.css') }}">
+    <title>MikroTik NAT and Address List Configuration</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>MikroTik NAT and Address List Configuration</h1>
+        <p>Quick and easy guide to set up NAT rules and address lists on your MikroTik router.</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>Step 1: Create the Address List</h2>
+            <p>Run the following script to create the <strong>BeecommCloud</strong> address list:</p>
+            <pre>
+<code># Create BeecommCloud Address List
+/ip firewall address-list
+add list=BeecommCloud address=188.120.135.91 comment="BeecommCloud IP"
+add list=BeecommCloud address=52.17.118.159 comment="BeecommCloud IP"
+add list=BeecommCloud address=62.219.230.91 comment="BeecommCloud IP"
+add list=BeecommCloud address=85.159.166.90 comment="BeecommCloud IP"
+add list=BeecommCloud address=31.168.104.224 comment="BeecommCloud IP"
+add list=BeecommCloud address=80.179.163.74 comment="BeecommCloud IP"
+add list=BeecommCloud address=192.30.30.0/24 comment="BeecommCloud Subnet"
+add list=BeecommCloud address=192.116.47.52 comment="BeecommCloud IP"
+</code>
+            </pre>
+        </section>
+
+        <section>
+            <h2>Step 2: Create NAT Rules</h2>
+            <p>Run the following script to create the NAT rules:</p>
+            <pre>
+<code># Create NAT Rule 1 (Port 2222)
+/ip firewall nat
+add chain=dstnat action=dst-nat to-addresses=192.168.0.100 to-ports=2222 protocol=tcp dst-port=2222 src-address-list=BeecommCloud comment="NUC1 - BeecommCloud - Port 2222"
+
+# Create NAT Rule 2 (Port 27017)
+add chain=dstnat action=dst-nat to-addresses=192.168.0.100 to-ports=27017 protocol=tcp dst-port=27017 src-address-list=BeecommCloud comment="NUC1 - BeecommCloud - Port 27017"
+
+# Create NAT Rule 3 (Port 8020)
+add chain=dstnat action=dst-nat to-addresses=192.168.0.100 to-ports=8020 protocol=tcp dst-port=8020 src-address-list=BeecommCloud comment="NUC1 - BeecommCloud - Port 8020"
+</code>
+            </pre>
+        </section>
+
+        <section>
+            <h2>Step 3: Apply the Scripts</h2>
+            <ol>
+                <li>Log in to your MikroTik router using <strong>Winbox</strong> or SSH.</li>
+                <li>Copy the script for the address list (Step 1) and paste it into the terminal.</li>
+                <li>Copy the script for the NAT rules (Step 2) and paste it into the terminal.</li>
+                <li>Verify the configuration:
+                    <ul>
+                        <li>Go to <strong>IP > Firewall > Address Lists</strong> to confirm the address list was created.</li>
+                        <li>Go to <strong>IP > Firewall > NAT</strong> to confirm the NAT rules were added.</li>
+                    </ul>
+                </li>
+            </ol>
+        </section>
+
+        <section>
+            <h2>Step 4: Test the Configuration</h2>
+            <p>Ensure traffic from the specified source IPs is correctly forwarded to <strong>192.168.0.100</strong> on the specified ports (2222, 27017, 8020). Use tools like <strong>ping</strong>, <strong>traceroute</strong>, or a port checker to validate.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>Need help? Contact your network administrator or visit the MikroTik community forums.</p>
+    </footer>
+</body>
+</html>

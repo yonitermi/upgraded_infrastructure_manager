@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ניהול רשת מתקדם עם כלי אוטומציה ל-MikroTik, DrayTek ושרת SIP.">
+    <meta name="keywords" content="MikroTik, DrayTek, SIP, ניהול רשת, אוטומציה">
+    <link rel="stylesheet" href="{{ url_for('static', filename='ai_theme_style.css') }}">
+    <title>Ipracticom</title>
+</head>
+<body>
+    <header>
+        <h1 style="text-align: center; color: #00bcd4; text-shadow: 0 0 10px #00bcd4, 0 0 20px #00bcd4;">
+             Ipracticom Network Infrastructure
+        </h1>
+    </header>
+
+    <main>
+        <div class="container">
+            <div>
+                <h1>Connect to MikroTik</h1>
+                <form method="POST" action="/">
+                    <input type="text" id="mikrotik-ip" name="customer_ip" placeholder="לדוגמה: 192.168.1.1" required>
+                    <br>
+                    <button class="sip-button" type="submit">Connect</button>
+                </form>
+            </div>
+
+            <div>
+                <h1>Connect to <span class="highlight">DrayTek</span></h1>
+                <form method="POST" action="/draytek">
+                    <input type="text" id="draytek-ip" name="customer_ip" placeholder="לדוגמה: 192.168.1.1" required>
+                    <br>
+                    <button class="sip-button" type="submit">Connect</button>
+                </form>
+            </div>
+        </div>    
+        <div class="button-container">
+            <form method="GET" action="/beecom-cloud">
+                <button class="sip-button" type="submit">Beecom-Cloud</button>
+            </form>
+
+            <form method="POST" action="{{ url_for('close') }}">
+                <button class="sip-button" type="submit">Disconnect</button>
+            </form>
+        </div>
+        <div class="sip-container">
+            <h2>SIP servers</h2>
+            <nav aria-label="קישורים לשרתי SIP">
+                <a class="sip-button" href="https://practicall.ip-com.co.il/" target="_blank">PR-1</a>
+                <a class="sip-button" href="https://practicall3.ip-com.co.il/" target="_blank">PR-3</a>
+                <a class="sip-button" href="https://practicall5.ip-com.co.il/" target="_blank">PR-5</a>
+                <a class="sip-button" href="https://practicall3.ip-com.co.il/" target="_blank">PR-6</a>	
+                <a class="sip-button" href="https://practicall7.ip-com.co.il/" target="_blank">PR-7</a>
+            </nav>
+        </div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,179 @@
+/* General Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #121212;
+    color: #e0e0e0;
+    line-height: 1.6;
+    direction: rtl; /* Right-to-left layout for Hebrew */
+}
+
+/* Container Styles */
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #1f1f1f;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+    text-align: center;
+}
+
+/* Header Styles */
+.container h1 {
+    font-size: 2rem;
+    color: #00bcd4;
+    text-align: center;
+    margin-bottom: 15px;
+    text-shadow: 0 2px 5px rgba(0, 188, 212, 0.5);
+}
+
+/* Paragraph Styles */
+.container p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: #ccc;
+}
+
+/* Grid Layout for Switches */
+.results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 15px;
+    justify-content: center;
+    padding: 10px;
+}
+
+/* Individual Result Box */
+.result-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #1f1f1f, #292929); /* Keep the dark theme */
+    border: 2px solid #00bcd4;
+    text-align: center;
+    font-size: 1.1em;
+    color: #e0e0e0;
+    height: 100px;
+    font-weight: bold;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s;
+    cursor: pointer;
+}
+
+.result-box:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 188, 212, 0.5);
+}
+
+/* Success & Failure Colors */
+.result-box.success {
+    background: linear-gradient(135deg, #1f1f1f, #2b2b2b);
+    border: 2px solid #00bcd4;
+}
+
+.result-box.failed {
+    background: linear-gradient(135deg, #1f1f1f, #3d3d3d);
+    border: 2px solid #ff1744;
+}
+
+/* IP Address Styling */
+.result-box .ip {
+    font-size: 1.2em;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+/* Status Text */
+.result-box .status {
+    font-size: 1em;
+    text-transform: uppercase;
+}
+
+/* SIP Sidebar Menu */
+.sip-container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 200px;
+    height: 100%;
+    background: #000;
+    color: #e0e0e0;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    box-shadow: -4px 0 6px rgba(0, 0, 0, 0.7);
+    overflow-y: auto;
+    text-align: center;
+}
+
+.sip-container h2 {
+    font-size: 1.4em;
+    margin-bottom: 15px;
+    color: #00bcd4;
+}
+
+.sip-container a {
+    display: block;
+    margin: 10px 0;
+    padding: 12px;
+    background: #1f1f1f;
+    color: #00bcd4;
+    text-decoration: none;
+    border-radius: 6px;
+    border: 1px solid #333;
+    transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.sip-container a:hover {
+    background: #00bcd4;
+    color: #121212;
+}
+
+/* Button Styles */
+button {
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: background 0.3s;
+    cursor: pointer;
+}
+
+.cta-button {
+    background: linear-gradient(135deg, #007bb5, #00bcd4);
+    color: white;
+    font-weight: bold;
+}
+
+.cta-button:hover {
+    background: linear-gradient(135deg, #005a87, #008fb3);
+}
+
+/* Red Buttons (More Professional) */
+button.danger {
+    background: linear-gradient(135deg, #ff4b2b, #ff416c);
+    color: white;
+    font-weight: bold;
+}
+
+button.danger:hover {
+    background: linear-gradient(135deg, #ff1b0c, #e6005c);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        margin-right: 220px; /* Adjust for the sidebar width */
+    }
+
+    .sip-container {
+        width: 180px; /* Slightly smaller on mobile */
+    }
+
+    .results-grid {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Adjust for smaller screens */
+    }
+}

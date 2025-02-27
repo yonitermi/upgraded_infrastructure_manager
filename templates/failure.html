@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='ai_theme_failure.css') }}">
+    <title>Connection Failed</title>
+</head>
+<body>
+    <div class="container">
+        <h1>⚠ Connection Failed!</h1>
+        <div class="error-message">
+            <div class="error-title">Ping Failed!</div>
+            <p>Please check the following:</p>
+            <ul>
+                <li>Check the bridge <strong>WAN1 DSL</strong> green light.</li>
+                <li>Enter <strong>WAN2 IP</strong>, if it exists (check client devices).</li>
+                <li>If WAN2 also fails, check the bridge <strong>WAN2 DSL</strong> green light.</li>
+                <li>Enter <strong>LTE IP</strong>.</li>
+            </ul>
+        </div>
+        <form method="POST" action="{{ url_for('index') }}">
+            <input type="text" name="customer_ip" placeholder="Re-enter IP address" required>
+            <br>
+            <button type="submit">Retry</button>
+        </form>
+    </div>
+    <div class="sip-container">
+        <h2>SIP Servers</h2>
+        <a class="sip-button" href="https://practicall.ip-com.co.il/" target="_blank">PR-1</a>
+        <a class="sip-button" href="https://practicall3.ip-com.co.il/" target="_blank">PR-3</a>
+        <a class="sip-button" href="https://practicall5.ip-com.co.il/" target="_blank">PR-5</a>
+        <a class="sip-button" href="https://practicall3.ip-com.co.il/" target="_blank">PR-6</a>	
+        <a class="sip-button" href="https://practicall7.ip-com.co.il/" target="_blank">PR-7</a>
+    </div>
+</body>
+</html>
